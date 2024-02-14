@@ -15,6 +15,7 @@ public interface Student {
   // Return value `ret` must hold:
   // * ret.length == 10 and the elements of ret are all different
   // * forall school in ret, 0 <= school < schools.length
+
   public int[] getApplications(
       int N,
       double S,
@@ -23,4 +24,5 @@ public interface Student {
       double aptitude,
       List<Double> schools,
       List<Double> synergies);
+
 }
