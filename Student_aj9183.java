@@ -25,15 +25,28 @@ public class Student_aj9183 implements Student {
         double aptitude,
         List<Double> schools,
         List<Double> synergies) {
-        School[] preferences = new School[schools.size()];
+
+        // Creates a list of preferences for each school
+        School[] topSynergy = new School[schools.size()];
+
+        // Creates a list of schools and sorts them based on synergies
         for (int i = 0; i != synergies.size(); ++i) {
-          preferences[i] = new School(i, schools.get(i) + synergies.get(i));
+          topSynergy[i] = new School(i, synergies.get(i));
         }
-        Arrays.sort(preferences);
+        Arrays.sort(topSynergy);
+
+        // Ranking System of Aptitude and Quality of Schools
+        for (int i = 0; i != topSynergy.length; ++i) {
+          double rank = Math.abs((aptitude * T) - (topSynergy[i].quality * S));
+          topSynergy[i].quality = rank;
+        }
+        Arrays.sort(topSynergy);
+
+        // Sorts the preferences and outputs a list of 10
         int[] ret = new int[10];
         for (int i = 0; i != 10; ++i) {
-          ret[i] = preferences[i].index;
+          ret[i] = topSynergy[i].index;
         }
         return ret;
-      }
+    }
 }
