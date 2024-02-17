@@ -51,22 +51,7 @@ public class Student_aj9183 implements Student {
         List<Double> schools,
         List<Double> synergies) {
 
-        // Creates a list of preferences for each school
-        School[] topSynergy = new School[schools.size()];
-        School[] preferences = new School[schools.size()];
-
         // Ranking System of Aptitude and Quality of Schools
-        for (int i = 0; i != topSynergy.length; ++i) {
-          double rank = - (Math.abs((aptitude * T) - (schools.get(i) * S)));
-          topSynergy[i] = new School(i, synergies.get(i), rank);
-        }
-        Arrays.sort(topSynergy);
-
-        // Creates a list of schools and sorts them based on synergies
-        for (int i = 0; i != 25; ++i) {
-          preferences[i] = new School(i, topSynergy[i].synergy);
-        }
-        Arrays.sort(preferences);
         School[] preferences = new School[schools.size()];
 
         // Calculates a score based on quality, aptitude, & synergy for each school
@@ -79,7 +64,6 @@ public class Student_aj9183 implements Student {
         // Sorts the preferences and outputs a list of 10
         int[] ret = new int[10];
         for (int i = 0; i != 10; ++i) {
-          ret[i] = preferences[i].index;
           ret[i] = preferences[i].index;
         }
         return ret;
