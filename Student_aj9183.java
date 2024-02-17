@@ -8,6 +8,11 @@ public class Student_aj9183 implements Student {
           synergy = s;
           quality = q;
         }
+
+        public School(int i, double q) {
+          index = i;
+          quality = q;
+        }
     
         private int index;
         private double synergy;
@@ -41,14 +46,14 @@ public class Student_aj9183 implements Student {
         // Creates a list of schools & sorts them based on rank
         for (int i = 0; i != 25; ++i) {
           double newQuality = - (Math.abs((aptitude * T) - (synergy[i].quality * S)));
-          preferences[i] = new School(i, synergy[i].synergy, newQuality);
+          preferences[i] = new School(i, newQuality);
         }
         Arrays.sort(preferences);
 
         // Sorts the preferences and outputs a list of 10
         int[] ret = new int[10];
         for (int i = 0; i != 10; ++i) {
-          ret[i] = synergy[i].index;
+          ret[i] = preferences[i].index;
         }
         return ret;
     }
